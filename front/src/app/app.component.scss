@@ -1,0 +1,33 @@
+footer {
+  background-color: #1a1a1a;  // ডার্ক ব্লু/ব্ল্যাক
+  color: #fff;
+
+  h5 {
+    color: #ff69b4;  // পিঙ্ক হেডিং
+    font-weight: bold;
+  }
+
+  ul li a {
+    color: #ccc;
+    text-decoration: none;
+    &:hover {
+      color: #ff69b4;
+    }
+  }
+
+  .social-icons i {
+    font-size: 1.5rem;
+    color: #ccc;
+    &:hover {
+      color: #ff69b4;
+    }
+  }
+
+  .payment-logos img {
+    height: 30px;
+  }
+
+  .border-top {
+    border-color: #333 !important;
+  }
+}

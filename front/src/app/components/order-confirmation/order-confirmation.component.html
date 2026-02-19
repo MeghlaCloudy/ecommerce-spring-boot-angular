@@ -1,0 +1,101 @@
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <i class="bi bi-check-circle-fill text-success display-1"></i>
+    <h2 class="mt-4 fw-bold">Thank You for Your Order!</h2>
+    <p class="text-muted fs-5">Your order has been successfully placed.</p>
+    <p class="fw-bold fs-4 text-primary">Order ID: #{{ order?.id || order?.orderId || 'XXXX' }}</p>
+  </div>
+
+  <div class="row g-5">
+    <!-- Left: Order Items -->
+    <div class="col-lg-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white rounded-top">
+          <h5 class="mb-0 fw-bold">Order Items</h5>
+        </div>
+        <div class="card-body p-4">
+          <div class="row align-items-center mb-4 pb-4 border-bottom" *ngFor="let item of order?.items; let last = last"
+            [ngClass]="{'border-bottom-0 mb-0': last}">
+            <div class="col-3 col-md-2">
+              <img [src]="getImageUrl(item.productImage || item.images?.[0])" class="img-fluid rounded shadow-sm"
+                alt="{{ item.productName }}" style="height: 100px; width: 100px; object-fit: cover;">
+            </div>
+            <div class="col-6 col-md-7">
+              <h6 class="mb-1 fw-semibold">{{ item.productName }}</h6>
+              <small class="text-muted">Quantity: <strong>{{ item.quantity }}</strong></small>
+              <br>
+              <small class="text-muted">Price: ৳{{ item.price | number:'1.0-0' }}</small>
+            </div>
+            <div class="col-3 text-end">
+              <strong class="fs-5 text-primary">৳{{ item.total | number:'1.0-0' }}</strong>
+            </div>
+          </div>
+
+          <div *ngIf="!order?.items || order.items.length === 0" class="text-center py-5">
+            <p class="text-muted">No items in this order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Summary + Address -->
+    <div class="col-lg-4">
+      <!-- Order Summary -->
+      <div class="card shadow-lg border-0 mb-4">
+        <div class="card-header bg-dark text-white rounded-top">
+          <h5 class="mb-0 fw-bold">Order Summary</h5>
+        </div>
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between mb-3">
+            <span class="fw-medium">Subtotal</span>
+            <span>৳{{ order?.subtotal || order?.totalAmount || 0 | number:'1.0-0' }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <span class="fw-medium">Delivery Charge</span>
+            <span class="text-success fw-bold">৳{{ order?.deliveryCharge || 0 | number:'1.0-0' }}</span>
+          </div>
+          <hr class="my-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <strong class="fs-4">Total Amount</strong>
+            <strong class="fs-3 text-pink fw-bold">
+              ৳{{ (order?.totalAmount || order?.subtotal || 0) + (order?.deliveryCharge || 0) | number:'1.0-0' }}
+            </strong>
+          </div>
+          <div class="mt-4 pt-3 border-top">
+            <small class="text-muted d-block mb-1">
+              <strong>Payment Method:</strong> {{ getPaymentMethodText(order?.paymentMethod) }}
+            </small>
+            <small class="text-muted d-block" *ngIf="order?.bkashNumber">
+              <strong>bKash Number:</strong> {{ order.bkashNumber }}
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping Address -->
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white rounded-top">
+          <h5 class="mb-0 fw-bold">Shipping Address</h5>
+        </div>
+        <div class="card-body p-4">
+          <p class="mb-1 fw-bold fs-6">{{ order?.name || 'N/A' }}</p>
+          <p class="mb-1"><strong>Phone:</strong> {{ order?.phone || 'N/A' }}</p>
+          <p class="mb-1">{{ order?.street || '' }}{{ order?.area ? ', ' + order.area : '' }}</p>
+          <p class="mb-1">{{ order?.city || '' }}, Bangladesh</p>
+          <p class="mb-0 text-muted" *ngIf="order?.email"><strong>Email:</strong> {{ order.email }}</p>
+          <p class="mb-0 text-muted" *ngIf="order?.note"><strong>Note:</strong> {{ order.note }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="text-center mt-5">
+    <a routerLink="/" class="btn btn-outline-primary btn-lg px-5 me-3">
+      <i class="bi bi-shop me-2"></i> Continue Shopping
+    </a>
+    <a routerLink="/orders" class="btn btn-primary btn-lg px-5">
+      <i class="bi bi-list-check me-2"></i> View All Orders
+    </a>
+  </div>
+</div>

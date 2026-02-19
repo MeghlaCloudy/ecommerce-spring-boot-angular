@@ -1,0 +1,72 @@
+.navbar {
+  .navbar-brand {
+    color: #ff69b4;
+    font-weight: 900;
+  }
+
+  .input-group {
+    .form-control {
+      border-color: #ff69b4;
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25);
+        border-color: #ff69b4;
+      }
+    }
+
+    .input-group-text {
+      background-color: white;
+      border-color: #ff69b4;
+      color: #ff69b4;
+    }
+  }
+
+  a.text-dark:hover {
+    color: #ff69b4 !important;
+  }
+}
+
+.bg-pink {
+  background-color: #ff69b4 !important;
+}
+
+.text-pink {
+  color: #ff69b4 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* এই দুটো লাইনই যথেষ্ট – বাইরে রাখো */
+.dropdown-toggle {
+  text-decoration: none !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu {
+  border-radius: 12px;
+  padding: 0;
+  margin-top: 8px;
+
+  .dropdown-item {
+    font-size: 0.95rem;
+    &:hover {
+      background-color: #f8f9fa;
+      color: #ff69b4;
+    }
+  }  
+  .btn-pink {
+  background-color: #ff69b4 !important;
+  border: none !important;
+}
+
+.btn-pink:hover {
+  background-color: #ff4785 !important;
+}
+
+
+
+}

@@ -1,0 +1,284 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button *ngFor="let img of images; let i = index" type="button" data-bs-target="#carouselExampleIndicators"
+      [attr.data-bs-slide-to]="i" [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null"
+      [attr.aria-label]="'Slide ' + (i + 1)">
+    </button>
+  </div>
+
+  <div class="carousel-inner">
+    <div *ngFor="let img of images; let i = index" class="carousel-item" [class.active]="i === 0">
+      <img [src]="img.src" class="d-block w-100" [alt]="img.alt">
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next.</span>
+  </button>
+</div>
+
+<div class="text-center my-3">
+  <h6 class="fw-bold text-uppercase text-dark" style="font-size: 1.1rem; letter-spacing: 5px;">
+    EXCLUSIVE OFFERS FOR YOU
+  </h6>
+</div>
+
+
+
+<!-- Hero Banner (Pond's Niacinamide Routine) -->
+<div class="container ">
+  <div class="hero-banner bg-light position-relative overflow-hidden">
+    <img src="assets/images/ponds-banner.webp" class="w-100" alt="Pond's Niacinamide Routine" routerLink="/products">S>
+
+  </div>
+
+
+  <!-- Deals Section -->
+  <div class="container my-5">
+    <h6 class="text-center mb-1 fw-bold">DEALS YOU CANNOT MISS</h6>
+
+    <div class="row g-4">
+      <!-- Deal Card 1 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/natural care.webp" class="card-img-top" alt="Winter Care" routerLink="/products">>
+
+        </div>
+      </div>
+
+      <!-- Deal Card 2 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/Fiyara.webp" class="card-img-top" alt="Fiama" routerLink="/products">>
+
+        </div>
+      </div>
+
+      <!-- Deal Card 3 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/senora.webp" class="card-img-top" alt="Revive" routerLink="/products">>
+
+        </div>
+      </div>
+
+      <!-- Deal Card 4 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/bogo-combo.webp" class="card-img-top" alt="BOGO Combo" routerLink="/products"> >
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Brands & Offers Section -->
+  <section class="my-5">
+    <div class="text-center mb-1">
+      <h6 class="display-10 fw-bold text-uppercase text-dark">
+        TOP BRANDS & OFFERS
+      </h6>
+
+    </div>
+
+    <div class="container">
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <img src="assets/images/trimmer.gif" class="card-img" alt="Trimmer Offer" routerLink="/products">
+
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <img src="assets/images/skino.webp" class="card-img" alt="SkinO Winter Sale" routerLink="/products">
+
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <img src="assets/images/vatika-banner.gif" class="card-img" alt="Vatika Nourishment" routerLink="/products">
+
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <img src="assets/images/treasure-of-glow.webp" class="card-img" alt="Free Delivery" routerLink="/products">
+
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <img src="assets/images/neutrogena.webp" class="card-img" alt="Neutrogena Save" routerLink="/products">
+
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm overflow-hidden position-relative">
+            <img src="assets/images/jewellery-banners.webp" class="card-img" alt="Jewellery Offer"
+              routerLink="/jewellery">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Section -->
+
+  <div class="container my-5">
+    <h6 class="text-center mb-1 fw-bold">SHOP BEAUTY PRODUCTS BY CATEGORY</h6>
+
+    <div class="row g-4">
+      <!-- Deal Card 1 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/makeup-category.webp" class="card-img-top" alt="Winter Care" routerLink="/makeup">
+
+        </div>
+      </div>
+
+      <!-- Deal Card 2 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/personalcare-category.webp" class="card-img-top" alt="Fiama" routerLink="/skin">
+
+        </div>
+      </div>
+
+      <!-- Deal Card 3 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/hair-care-category.webp" class="card-img-top" alt="Revive" routerLink="/hair">
+
+        </div>
+      </div>
+
+      <!-- Deal Card 4 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/mom-baby-category.webp" class="card-img-top" alt="BOGO Combo" routerLink="/momBaby">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- second row category -->
+
+  <div class="container my-5">
+    
+
+    <div class="row g-4">
+      <!-- Deal Card 1 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/skin-care-category.webp" class="card-img-top" alt="Winter Care"
+            routerLink="/skin">
+
+        </div>
+      </div>
+
+      <!-- Deal Card 2 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/accessories-category.webp" class="card-img-top" alt="Fiama" routerLink="/accessories">
+
+        </div>
+      </div>
+
+      <!-- Deal Card 3 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/fragrance-category.webp" class="card-img-top" alt="Revive" routerLink="/fragrance">
+
+        </div>
+      </div>
+
+      <!-- Deal Card 4 -->
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-center">
+          <img src="assets/images/makeup-category.webp" class="card-img-top" alt="BOGO Combo" routerLink="/makeup">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Badges Section (Footer এর উপরে) -->
+  <!-- Trust Badges Section -->
+  <div class="col-12 trust-badges-section">
+    <div class="row g-0 mx-0">
+      <!-- Badge 1 -->
+      <div class="col-6 col-md-3 py-3">
+        <div class="d-flex flex-column align-items-center text-white">
+          <div class="icon-wrapper mb-2">
+            <div class="icon-bg"></div>
+            <div class="icon-circle">
+              <i class="bi bi-check-lg fs-4 text-white"></i>
+            </div>
+          </div>
+          <h5 class="badge-number mb-1">100%</h5>
+          <p class="badge-title mb-0">AUTHENTIC<br>PRODUCTS</p>
+        </div>
+      </div>
+
+      <!-- Badge 2 -->
+      <div class="col-6 col-md-3 py-3">
+        <div class="d-flex flex-column align-items-center text-white">
+          <div class="icon-wrapper mb-2">
+            <div class="icon-bg"></div>
+            <div class="icon-circle">
+              <i class="bi bi-bag-heart fs-4 text-white"></i>
+            </div>
+          </div>
+          <h5 class="badge-number mb-1">15000+</h5>
+          <p class="badge-title mb-0">BEAUTY<br>PRODUCTS</p>
+        </div>
+      </div>
+
+      <!-- Badge 3 -->
+      <div class="col-6 col-md-3 py-3">
+        <div class="d-flex flex-column align-items-center text-white">
+          <div class="icon-wrapper mb-2">
+            <div class="icon-bg"></div>
+            <div class="icon-circle">
+              <i class="bi bi-star fs-4 text-white"></i>
+            </div>
+          </div>
+          <h5 class="badge-number mb-1">400+</h5>
+          <p class="badge-title mb-0">EXCLUSIVE<br>BRANDS</p>
+        </div>
+      </div>
+
+      <!-- Badge 4 -->
+      <div class="col-6 col-md-3 py-3">
+        <div class="d-flex flex-column align-items-center text-white">
+          <div class="icon-wrapper mb-2">
+            <div class="icon-bg"></div>
+            <div class="icon-circle">
+              <i class="bi bi-chat-square-text fs-4 text-white"></i>
+            </div>
+          </div>
+          <h5 class="badge-number mb-1">FREE</h5>
+          <p class="badge-title mb-0">BEAUTY<br>CONSULTATION</p>
+        </div>
+      </div>
+    </div>
+  </div>

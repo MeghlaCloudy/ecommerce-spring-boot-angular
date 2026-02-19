@@ -1,0 +1,197 @@
+<div class="container mt-4">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">
+      <i class="bi bi-shop me-2"></i>Brand Management
+    </h2>
+  </div>
+
+  <!-- Form Card -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">
+        <i class="bi bi-plus-circle me-2"></i>
+        {{ editingId ? 'Edit Brand' : 'Create New Brand' }}
+      </h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="saveBrand()">
+        <div class="row">
+          <!-- Brand Name -->
+          <div class="col-md-6 mb-3">
+            <label for="brandName" class="form-label">
+              <i class="bi bi-tag-fill me-1"></i>Brand Name
+              <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="brandName"
+              class="form-control" 
+              placeholder="Enter brand name" 
+              [(ngModel)]="brandData.name"
+              name="name" 
+              required
+              [class.is-invalid]="isFormSubmitted && (!brandData.name || brandData.name.trim() === '')"
+            />
+            <div 
+              class="invalid-feedback" 
+              *ngIf="isFormSubmitted && (!brandData.name || brandData.name.trim() === '')"
+            >
+              Brand name is required
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="col-md-6 mb-3">
+            <label for="brandDescription" class="form-label">
+              <i class="bi bi-text-paragraph me-1"></i>Description
+            </label>
+            <input 
+              type="text" 
+              id="brandDescription"
+              class="form-control" 
+              placeholder="Enter brand description" 
+              [(ngModel)]="brandData.description"
+              name="description" 
+            />
+          </div>
+
+          <!-- Logo Upload -->
+          <div class="col-md-12 mb-3">
+            <label class="form-label">
+              <i class="bi bi-image me-1"></i>Brand Logo
+            </label>
+            <div class="input-group">
+              <input 
+                type="file" 
+                class="form-control" 
+                (change)="onFileChange($event)"
+                accept="image/*"
+                id="logoUpload"
+              />
+              <label class="input-group-text" for="logoUpload">
+                <i class="bi bi-upload"></i>
+              </label>
+            </div>
+            <small class="text-muted">Upload logo image (JPG, PNG, etc.)</small>
+            
+            <!-- Show selected file name -->
+            <div *ngIf="selectedFile" class="mt-2">
+              <small class="text-success">
+                <i class="bi bi-check-circle me-1"></i>
+                Selected: {{ selectedFile.name }}
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Buttons -->
+        <div class="d-flex gap-2 mt-4">
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+          >
+            <i class="bi" [class.bi-check-circle]="!editingId" [class.bi-arrow-clockwise]="editingId"></i>
+            {{ editingId ? 'Update Brand' : 'Create Brand' }}
+          </button>
+          
+          <button 
+            type="button" 
+            class="btn btn-outline-secondary" 
+            (click)="resetForm()"
+          >
+            <i class="bi bi-x-circle me-1"></i>Clear
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Brands Table -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">
+        <i class="bi bi-list-ul me-2"></i>Brand List
+      </h5>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th class="text-nowrap">
+                <i class="bi bi-tag me-1"></i>Name
+              </th>
+              <th class="text-nowrap">
+                <i class="bi bi-text-left me-1"></i>Description
+              </th>
+              <th class="text-nowrap">
+                <i class="bi bi-image me-1"></i>Logo
+              </th>
+              <th class="text-nowrap">
+                <i class="bi bi-gear me-1"></i>Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let brand of brands">
+              <td class="align-middle fw-semibold">{{ brand.name }}</td>
+              <td class="align-middle">
+                <span *ngIf="brand.description; else noDescription">
+                  {{ brand.description }}
+                </span>
+                <ng-template #noDescription>
+                  <span class="text-muted fst-italic">No description</span>
+                </ng-template>
+              </td>
+              <td class="align-middle">
+                <div *ngIf="brand.logoUrl" class="d-flex align-items-center">
+                  <img 
+                    [src]="getImageUrl(brand.logoUrl)" 
+                    width="60" 
+                    height="60" 
+                    class="rounded-circle border shadow-sm me-3"
+                    alt="Brand Logo" 
+                  />
+                </div>
+                <div *ngIf="!brand.logoUrl" class="text-muted">
+                  <i class="bi bi-image me-1"></i>No logo
+                </div>
+              </td>
+              <td class="align-middle">
+                <div class="btn-group btn-group-sm" role="group">
+                  <button 
+                    (click)="editBrand(brand)" 
+                    class="btn btn-outline-primary"
+                    title="Edit"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                  <button 
+                    (click)="deleteBrand(brand.id)" 
+                    class="btn btn-outline-danger"
+                    title="Delete"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="brands.length === 0">
+              <td colspan="4" class="text-center py-4 text-muted">
+                <i class="bi bi-inbox display-6 d-block mb-2"></i>
+                No brands found. Create your first brand!
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <small>
+        <i class="bi bi-info-circle me-1"></i>
+        Showing {{ brands.length }} brand{{ brands.length !== 1 ? 's' : '' }}
+      </small>
+    </div>
+  </div>
+</div>

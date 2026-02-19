@@ -1,0 +1,144 @@
+<div class="container mt-4">
+
+  <!-- ===== Header ===== -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="fw-bold">
+      <i class="bi bi-list-ul me-2"></i> Category Management
+    </h3>
+  </div>
+
+  <!-- ===== Form Card ===== -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      <i class="bi bi-folder-plus me-2"></i>
+      {{ editingId ? 'Update Category' : 'Create Category' }}
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="save()" class="row g-3">
+
+        <!-- Name -->
+        <div class="col-md-4">
+          <label class="form-label">Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="categoryForm.name"
+            name="name"
+            placeholder="Enter category name"
+            required
+          />
+        </div>
+
+        <!-- Parent -->
+        <div class="col-md-4">
+          <label class="form-label">Parent Category</label>
+          <select
+            class="form-select"
+            [(ngModel)]="categoryForm.parentId"
+            name="parentId"
+          >
+            <option [ngValue]="null">No Parent</option>
+            <option *ngFor="let c of categories" [value]="c.id">
+              {{ c.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Image -->
+        <div class="col-md-4">
+          <label class="form-label">Category Image</label>
+          <input
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event)"
+          />
+        </div>
+
+        <!-- Actions -->
+        <div class="col-12 d-flex gap-2">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle me-1"></i>
+            {{ editingId ? 'Update' : 'Create' }}
+          </button>
+
+          <button type="button" class="btn btn-secondary" (click)="reset()">
+            <i class="bi bi-x-circle me-1"></i>
+            Clear
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Table Card ===== -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <i class="bi bi-table me-2"></i> Category List
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Parent</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let c of categories">
+            <td class="fw-semibold">{{ c.name }}</td>
+
+            <td>
+              <img
+                *ngIf="c.imageUrl"
+                [src]="imageUrl(c.imageUrl)"
+                width="45"
+                height="45"
+                class="rounded-circle border"
+                style="object-fit: cover;"
+              />
+            </td>
+
+            <td>
+              <span class="badge bg-secondary" *ngIf="c.parentId">
+                {{ c.parentId }}
+              </span>
+              <span class="text-muted" *ngIf="!c.parentId">
+                —
+              </span>
+            </td>
+
+            <td class="text-center">
+              <button
+                class="btn btn-sm btn-outline-primary me-2"
+                (click)="edit(c)"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+
+              <button
+                class="btn btn-sm btn-outline-danger"
+                (click)="delete(c.id)"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr *ngIf="categories.length === 0">
+            <td colspan="4" class="text-center text-muted py-4">
+              <i class="bi bi-inbox fs-4"></i>
+              <div>No categories found</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

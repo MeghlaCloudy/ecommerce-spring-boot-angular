@@ -1,0 +1,74 @@
+<!-- <div class="container mt-4">
+
+  <h3 class="fw-bold mb-3">
+    <i class="bi bi-box-seam me-2"></i> Product Management
+  </h3>
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <form (ngSubmit)="save()" class="row g-3">
+
+        <div class="col-md-4">
+          <input class="form-control" placeholder="Name"
+                 [(ngModel)]="productForm.name" name="name" required>
+        </div>
+
+        <div class="col-md-4">
+          <input type="number" class="form-control" placeholder="Price"
+                 [(ngModel)]="productForm.price" name="price" required>
+        </div>
+
+        <div class="col-md-4">
+          <input type="number" class="form-control" placeholder="Stock"
+                 [(ngModel)]="productForm.stockQuantity" name="stockQuantity">
+        </div>
+
+        <div class="col-md-12">
+          <input type="file" class="form-control" multiple
+                 (change)="onImageChange($event)">
+        </div>
+
+        <div class="col-12">
+          <button class="btn btn-success me-2">
+            <i class="bi bi-check-circle"></i>
+            {{ editingId ? 'Update' : 'Create' }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="reset()">
+            Clear
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let p of products">
+      <div class="card h-100 shadow-sm">
+
+        <img *ngIf="p.images?.length"
+             [src]="imageUrl(p.images[0])"
+             class="card-img-top"
+             style="height:180px;object-fit:cover">
+
+        <div class="card-body">
+          <h6>{{ p.name }}</h6>
+          <p class="fw-bold">{{ p.price }} ৳</p>
+        </div>
+
+        <div class="card-footer text-center">
+          <button class="btn btn-sm btn-outline-primary me-2"
+                  (click)="edit(p)">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-danger"
+                  (click)="delete(p.id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div> -->
